@@ -1,0 +1,25 @@
+.keyData_Card{
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.keyData{
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+    padding : 20px 20px 20px 20px;
+    background-color: #FBFBFB;
+    justify-content: space-between;
+    height: 17%; 
+}
+
+.keyData_img{
+
+}
+
+.keyData_infos{
+    
+}
+
