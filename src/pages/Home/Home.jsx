@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getDataUser, isMock } from '../../Utility/Utility';
+import { getData, getDataUser, isMock } from '../../Utility/Utility';
 import KeyData from '../../components/KeyData/KeyData';
 import calorieImg from '../../assets/calories-icon.png';
 import carbsImg from '../../assets/carbs-icon.png'
@@ -10,22 +10,18 @@ import proteinImg from '../../assets/protein-icon.png'
 function Home() {
   
   const [userInformation, setUserInformations] = useState ([]);
-  const [isloading, setIsLoading] = useState(true);
-  useEffect(() => fetchInformationUser);
-
-  async function fetchInformationUser () {
-    const info = await getDataUser(12) 
-    setUserInformations(info)
-    setIsLoading(false);
-    console.log(userInformation);
-  }
-
+  useEffect(() => {fetchInformationUser()}, []);
+  //useEffect(() => {}, [userInformation]);
   
-  if(isloading){
-    isMock()
-    return (<div> Chargement...</div>)
-  } 
-  else return (
+  async function fetchInformationUser () {
+    const info = await getData(12, 'userInfo'); 
+    setUserInformations(info)
+
+    
+  }
+  console.log(userInformation)
+  
+  return (
     <div>
       <h1>Bonjour <span>{userInformation.userInfos?.firstName}</span></h1>
       <p>Félicitations! Vous avez explosés vos objectifs hier</p>
