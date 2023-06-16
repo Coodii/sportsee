@@ -42,7 +42,7 @@ export async function getData(id, dataType){
     
     //if unable to connect to the backend, mocking api 
     catch (err){
-        console.log(err);
+        //console.log(err);
         console.log('Connection error : mocking data instead');
         data = mockData;
         return data;
