@@ -6,6 +6,8 @@ import carbsImg from '../../assets/carbs-icon.png'
 import fatImg from '../../assets/fat-icon.png'
 import proteinImg from '../../assets/protein-icon.png'
 import DailyActivity from '../../components/DailyActivities/DailyActivities';
+import AverageSessions from '../../components/AverageSessions/AverageSessions';
+import Performances from '../../components/Performances/Performances';
 
 
 function Home() {
@@ -15,12 +17,9 @@ function Home() {
   //useEffect(() => {}, [userInformation]);
   
   async function fetchInformationUser () {
-    const info = await getData(18, 'userInfo'); 
+    const info = await getDataUser(18); 
     setUserInformations(info)
-
-    
   }
-  console.log(userInformation)
   
   return (
     <div>
@@ -28,6 +27,14 @@ function Home() {
       <p>Félicitations! Vous avez explosés vos objectifs hier</p>
       <div className='keyData_Card'>
       <DailyActivity/>
+      </div>
+      <div className='keyData_Card'>
+      <Performances/>
+      </div>
+      <div className='keyData_Card'>
+        <Performances/>
+          <DailyActivity/>
+          <AverageSessions/>
           <KeyData image={calorieImg} value={userInformation.keyData?.calorieCount + 'kCal'} text = 'Calories' /> 
           <KeyData image={proteinImg} value={userInformation.keyData?.proteinCount + 'g'} text = 'Protéines' /> 
           <KeyData image={carbsImg} value={userInformation.keyData?.carbohydrateCount + 'g'} text = 'Glucides' /> 
