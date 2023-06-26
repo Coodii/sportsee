@@ -8,6 +8,9 @@ import proteinImg from '../../assets/protein-icon.png'
 import DailyActivity from '../../components/DailyActivities/DailyActivities';
 import AverageSessions from '../../components/AverageSessions/AverageSessions';
 import Performances from '../../components/Performances/Performances';
+import Score from '../../components/Score/Score';
+import Header from '../../components/Header/Header';
+import './home.css';
 
 
 function Home() {
@@ -22,26 +25,31 @@ function Home() {
   }
   
   return (
-    <div>
-      <h1>Bonjour <span>{userInformation.userInfos?.firstName}</span></h1>
+    <main className='homePage'>
+      <Header/>
+      <h1>Bonjour <span className='user'> {userInformation.userInfos?.firstName}</span></h1>
       <p>Félicitations! Vous avez explosés vos objectifs hier</p>
-      <div className='keyData_Card'>
-      <DailyActivity/>
-      </div>
-      <div className='keyData_Card'>
-      <Performances/>
-      </div>
-      <div className='keyData_Card'>
-        <Performances/>
+      <article className='dashboard'>
+        <div className='dashboard_graph'>
+          <div className='dashboard_row'>
           <DailyActivity/>
+          </div>
+          <div className='dashboard_row'>
           <AverageSessions/>
+          <Performances/>
+          <Score/>
+          </div>
+        </div>
+      <div className='keyData_Card'>
           <KeyData image={calorieImg} value={userInformation.keyData?.calorieCount + 'kCal'} text = 'Calories' /> 
           <KeyData image={proteinImg} value={userInformation.keyData?.proteinCount + 'g'} text = 'Protéines' /> 
           <KeyData image={carbsImg} value={userInformation.keyData?.carbohydrateCount + 'g'} text = 'Glucides' /> 
           <KeyData image={fatImg} value={userInformation.keyData?.lipidCount + 'g'} text = 'Lipides' /> 
       </div>
+      </article>
+      <div className='sideBar'/>
       
-    </div>
+    </main>
   )
 } 
 

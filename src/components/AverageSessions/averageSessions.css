@@ -1,3 +1,6 @@
-.averageSessions_graph{
+.averageSessions{
+    height: 100%;
+    width: 30%;
     background-color: #E60000;
+    border-radius: 20px 20px 20px 20px;
 }

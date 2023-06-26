@@ -23,21 +23,22 @@ export default function AverageSessions() {
         opacity={0.1}
         x={points[0].x}
         width={3000}
-        height={300}
+        height={3000}
       />
     );
   }
 
-  console.log(sessions);
   return (
-    <ResponsiveContainer width="30%" height="100%" className={'averageSessions_graph'}>
-        <LineChart width={300} height={100} data={sessions}>
-            <XAxis dataKey="day" tickLine={false}
-              axisLine={false} />
-            <YAxis hide domain={['dataMin -10', 'dataMax + 10']}/>
-          <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} dot={false} />
-          <Tooltip content={<ToolTipAverageSessions/>} cursor={<CustomizedCursor/>} />
-        </LineChart>
-      </ResponsiveContainer>
+    <div className='averageSessions'>
+      <ResponsiveContainer width="100%" height="100%">
+          <LineChart width={300} height={100} data={sessions}>
+              <XAxis dataKey="day" tickLine={false}
+                axisLine={false} />
+              <YAxis hide domain={['dataMin -10', 'dataMax + 10']}/>
+            <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} dot={false} />
+            <Tooltip content={<ToolTipAverageSessions/>} cursor={<CustomizedCursor/>} />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     );
 }

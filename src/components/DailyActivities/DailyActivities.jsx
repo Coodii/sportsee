@@ -2,6 +2,7 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 import { getActivity } from '../../Utility/Utility';
 import { useEffect, useState } from 'react';
 import {CustomTooltip} from './ToolTipActivity/ToolTipActivities';
+import './dailyActivity.css';
 
 
 
