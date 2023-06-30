@@ -31,7 +31,7 @@ function Home() {
       <p>Félicitations! Vous avez explosés vos objectifs hier</p>
       <article className='dashboard'>
         <div className='dashboard_graph'>
-          <div className='dashboard_row'>
+          <div className='dashboard_row activity'>
           <DailyActivity/>
           </div>
           <div className='dashboard_row'>
@@ -40,14 +40,13 @@ function Home() {
           <Score/>
           </div>
         </div>
-      <div className='keyData_Card'>
-          <KeyData image={calorieImg} value={userInformation.keyData?.calorieCount + 'kCal'} text = 'Calories' /> 
-          <KeyData image={proteinImg} value={userInformation.keyData?.proteinCount + 'g'} text = 'Protéines' /> 
-          <KeyData image={carbsImg} value={userInformation.keyData?.carbohydrateCount + 'g'} text = 'Glucides' /> 
-          <KeyData image={fatImg} value={userInformation.keyData?.lipidCount + 'g'} text = 'Lipides' /> 
-      </div>
+        <div className='keyData_Card'>
+            <KeyData image={calorieImg} value={userInformation.keyData?.calorieCount + 'kCal'} text = 'Calories' /> 
+            <KeyData image={proteinImg} value={userInformation.keyData?.proteinCount + 'g'} text = 'Protéines' /> 
+            <KeyData image={carbsImg} value={userInformation.keyData?.carbohydrateCount + 'g'} text = 'Glucides' /> 
+            <KeyData image={fatImg} value={userInformation.keyData?.lipidCount + 'g'} text = 'Lipides' /> 
+        </div>
       </article>
-      <div className='sideBar'/>
       
     </main>
   )

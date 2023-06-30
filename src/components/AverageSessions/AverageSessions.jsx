@@ -12,7 +12,7 @@ export default function AverageSessions() {
   //useEffect(() => {}, [userInformation]); 
   
   async function fetchSessions () {
-    const info = await getAverageSesssions(18); 
+    const info = await getAverageSesssions(12); 
     setSessions(info)
   }
 
@@ -26,16 +26,17 @@ export default function AverageSessions() {
         height={3000}
       />
     );
-  }
-
+    }
+    
   return (
     <div className='averageSessions'>
       <ResponsiveContainer width="100%" height="100%">
-          <LineChart width={300} height={100} data={sessions}>
-              <XAxis dataKey="day" tickLine={false}
-                axisLine={false} />
-              <YAxis hide domain={['dataMin -10', 'dataMax + 10']}/>
-            <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} dot={false} />
+          <LineChart data={sessions} margin={{ top: 40, right: 30, left: 30, bottom: 5 }}>
+            <text x="25" y="45" fontSize="20" fill="white"opacity={0.7}>Durée moyenne des sessions</text>
+            <XAxis dataKey="day" tickLine={false}
+              axisLine={false} tick={{ fill: '#FFFFFF', opacity: '0.7' }} dy={-10}/>
+            <YAxis hide domain={['dataMin -20', 'dataMax + 30']}/>
+            <Line type="natural" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} dot={false} />
             <Tooltip content={<ToolTipAverageSessions/>} cursor={<CustomizedCursor/>} />
           </LineChart>
         </ResponsiveContainer>

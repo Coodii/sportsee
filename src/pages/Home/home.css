@@ -1,6 +1,6 @@
-.homePage{
-    margin: 0;
-    padding: 0;
+main{
+    height: 100%;
+    width: 100%; 
 }
 
 header{
@@ -38,37 +38,39 @@ header{
 }
 
 .dashboard{
-    width: 1920px;
-    height: 1080px;
+    width: 100%;
+    height: 750px;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 
 .dashboard_graph{
     width: 70%;
-    height: 100%;
-    
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .dashboard_row{
     width: 100%;
-    height: 50%;
+    height: 45%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
+.activity{
+    height: 50%
+}
+
 .keyData_Card{
     width: 20%;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 
-.sideBar{
-    width: 30px;
-    height: 600px;
-    background-color: black;
-}

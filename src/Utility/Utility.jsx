@@ -28,14 +28,16 @@ export async function getActivity(id){
         let response = await fetch(url);
         console.log('Connection successful with activities ');
         data = await response.json();
-        return data.data.sessions;
+        data = convertDailyActivityData(data.data.sessions);
+        return data;
         }
     
     //if unable to connect to the backend, mocking api 
     catch (err){
         console.log('Connection error with activities: mocking data instead');
         data = USER_ACTIVITY.find(user => user.userId === id);
-        return data.sessions;
+        data = convertDailyActivityData(data.sessions);
+        return data;
     }
 }
 
@@ -48,14 +50,16 @@ export async function getAverageSesssions(id){
         let response = await fetch(url);
         console.log('Connection successful with average-sessions');
         data = await response.json();
-        return data.data.sessions;
+        data = convertAverageSessions(data.data.sessions);
+        return data;
         }
     
     //if unable to connect to the backend, mocking api 
     catch (err){
         console.log('Connection error with average sessions: mocking data instead');
         data = USER_AVERAGE_SESSIONS.find(user => user.userId === id);
-        return data.sessions;
+        data = convertAverageSessions(data.sessions);
+        return data;
     }
 }
 
@@ -67,7 +71,7 @@ export async function getPerformances(id){
         let response = await fetch(url);
         console.log('Connection successful with performances');
         data = await response.json();
-        data = convertPerformanceData(data);
+        data = convertPerformanceData(data.data);
         return data.data;
         }
     
@@ -88,15 +92,46 @@ export async function getScore(id){
         let response = await fetch(url);
         console.log('Connection successful with score');
         data = await response.json();
-        return data.data;
+        data = convertScoreData(data.data)
+        return data;
         }
     
     //if unable to connect to the backend, mocking api 
     catch (err){
         console.log('Connection error with score: mocking data instead');
         data = USER_MAIN_DATA.find(user => user.id === id);
+        data = convertScoreData(data);
         return data;
     }
+}
+
+
+function convertDailyActivityData(data){ 
+    let i = 0;
+    let newData = [];
+    data.forEach(data => {
+        i += 1;
+        newData.push({
+          index: i,
+          calories : data.calories,
+          kilogram : data.kilogram
+        })})
+    return newData;
+}
+
+
+function convertAverageSessions(data){
+    const days = ['L','M', 'M', 'J', 'V', 'S', 'D'];
+    let i = -1;
+    let newData = [];
+    data.forEach(data => {
+        i += 1;
+        newData.push({
+          day: days[i],
+          sessionLength : data.sessionLength
+        })})
+        console.log(newData);
+    return newData;
 }
 
 function convertPerformanceData(data){
@@ -113,4 +148,16 @@ function convertPerformanceData(data){
         value: e.value
       }));
     return(newData.reverse());
+}
+
+function convertScoreData(data){
+    let newData = [];
+    if(data.todayScore !== undefined){
+        console.log('test')
+        newData.push({score: data.todayScore*100})
+    }
+    else{
+        newData.push({score: data.score*100})
+    }
+    return newData;
 }

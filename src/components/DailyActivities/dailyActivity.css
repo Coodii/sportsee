@@ -1,5 +1,6 @@
 .dailyActivity{
-    height: auto;
-    width: auto;
-    
+    height: 100%;
+    width: 100%;
+    background-color: #FBFBFB;
+    border-radius: 10px 10px 10px 10px;
 }
