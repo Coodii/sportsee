@@ -1,0 +1,29 @@
+footer{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    background-color: black;
+    z-index: -1;
+}
+
+.category{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.category_img{
+    width: fit-content;
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+

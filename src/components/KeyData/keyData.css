@@ -8,13 +8,13 @@
     flex-direction: row;
     width: auto;
     background-color: #FBFBFB;
-    padding: 20px 0px 20px 50px;
+    padding: 20px 0px 20px 10%;
     border-radius: 10px 10px 10px 10px;
 }
 
 .keyData_img{
-    width: 30%;
-    height: 70%;
+    width: 90px;
+    height: 90px;
 }
 
 .keyData_infos{
@@ -23,12 +23,12 @@
 }
 
 .keyData_value{
-    padding-left: 30px;
+    padding-left: 30%;
     font-size: 20px;
     font-weight: bold;
 }
 
 .keyData_name{
-    padding-left: 30px;
+    padding-left: 30%;
     color: grey;
 }

@@ -71,8 +71,9 @@ export async function getPerformances(id){
         let response = await fetch(url);
         console.log('Connection successful with performances');
         data = await response.json();
-        data = convertPerformanceData(data.data);
-        return data.data;
+        console.log(data)
+        data = convertPerformanceData(data);
+        return data;
         }
     
     //if unable to connect to the backend, mocking api 

@@ -17,7 +17,7 @@ const [performances, setPerformances] = useState ([]);
 
     return (
       <div className='performance'>
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="90%" >
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={performances} >
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" stroke="white" tickLine={false} dy={2} />

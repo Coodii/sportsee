@@ -11,6 +11,7 @@ import Performances from '../../components/Performances/Performances';
 import Score from '../../components/Score/Score';
 import Header from '../../components/Header/Header';
 import './home.css';
+import Footer from '../../components/Footer/Footer';
 
 
 function Home() {
@@ -25,8 +26,10 @@ function Home() {
   }
   
   return (
+    <div className='homePage'>
+    <Header/>
     <main className='homePage'>
-      <Header/>
+      
       <h1>Bonjour <span className='user'> {userInformation.userInfos?.firstName}</span></h1>
       <p>Félicitations! Vous avez explosés vos objectifs hier</p>
       <article className='dashboard'>
@@ -47,8 +50,9 @@ function Home() {
             <KeyData image={fatImg} value={userInformation.keyData?.lipidCount + 'g'} text = 'Lipides' /> 
         </div>
       </article>
-      
     </main>
+    <Footer/>
+    </div>
   )
 } 
 
