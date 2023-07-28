@@ -21,6 +21,7 @@ const displayScore = '';
 
     return (
       <div className='score'>
+        <div className='whiteCircle'></div>
         <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart data={score} innerRadius={120} barSize={10} startAngle={90} endAngle={450} fill={'#FF0000'}>
           <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />

@@ -71,7 +71,6 @@ export async function getPerformances(id){
         let response = await fetch(url);
         console.log('Connection successful with performances');
         data = await response.json();
-        console.log(data)
         data = convertPerformanceData(data);
         return data;
         }

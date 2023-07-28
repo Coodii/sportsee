@@ -5,3 +5,13 @@
     background-color: black;
     position: relative;
 }
+
+.whiteCircle{
+    position: absolute;
+    height: 72%;
+    width: 62%;
+    top: 14%;
+    left: 19%;
+    background-color: white;
+    border-radius: 50%
+}
