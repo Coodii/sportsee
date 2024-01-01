@@ -1,6 +1,29 @@
 .averageSessions{
-    height: 100%;
-    width: 30%;
+    height: 250px;
+    width: 250px;
     background-color: #E60000;
     border-radius: 10px 10px 10px 10px;
+}
+
+
+@media only screen and (max-device-width : 1400px){
+    .average_session_text{
+        font-size: 12px;
+    }
+
+    .averageSessions{
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media only screen and (max-device-width : 1100px){
+    .averageSessions{
+        height: 180px;
+        width: 180px;
+    }
+
+    .average_session_text{
+        font-size: 10px;
+    }
 }

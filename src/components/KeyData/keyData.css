@@ -1,34 +1,52 @@
 
-.keyData{  
-    height: 19%;
+.keyData{
+    height: 20%;
 }
 
 .keyData_content{
+    height: 100%;
     display: flex;
     flex-direction: row;
-    width: auto;
     background-color: #FBFBFB;
-    padding: 20px 0px 20px 10%;
     border-radius: 10px 10px 10px 10px;
 }
 
 .keyData_img{
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
+    margin: 20px 0 0 20%;
 }
 
 .keyData_infos{
     display: flex;
     flex-direction: column;
+    height: 100%;
+
 }
 
 .keyData_value{
-    padding-left: 30%;
+    padding: 20px 0 0 20px;
     font-size: 20px;
     font-weight: bold;
+    margin: 0;
 }
 
 .keyData_name{
-    padding-left: 30%;
+    padding: 10px 0 0 20px;
+    margin: 0;
     color: grey;
+}
+
+@media only screen and (max-device-width : 1400px){
+    .keyData_img{
+        width: 50px;
+        height: 50px;
+        margin: 25px 0 0 20%;
+    }
+}
+
+@media only screen and (max-device-width : 1100px){
+    .keyData_img{
+        margin: 25px 0 0 10%;
+    }
 }

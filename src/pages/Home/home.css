@@ -1,11 +1,10 @@
-.mainPage{
-    position: relative;
+.homePage{
+    height: 70vh;
 }
 
 main{
     height: 100%;
-    width: 85%;
-    padding-left: 200px;
+    width: 100%;
 }
 
 header{
@@ -38,16 +37,23 @@ header{
     
 }
 
+.user_title, .objective_text{
+    padding-left: 15%;
+}
+
 .user{
     color: #E60000;
 }
 
 .dashboard{
-    width: 100%;
-    height: fit-content;
+    margin: 0;
+    padding-left: 15%;
+    padding-right: 5%;
+    width: 80%;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .dashboard_graph{
@@ -72,10 +78,25 @@ header{
 
 .keyData_Card{
     width: 25%;
-    height: auto;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+@media only screen and (max-device-width : 1400px){
+    .dashboard_graph{
+        
+        justify-content: space-around;
+    }
+
+    .dashboard_row{
+        height: 30%;
+    }
+
+    .activity{
+        height: 55%;
+    }
 }
 
 

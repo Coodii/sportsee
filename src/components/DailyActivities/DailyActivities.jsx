@@ -27,7 +27,7 @@ const [activities, setActivities] = useState ([]);
           data={activities}
           margin={{ top: 40, right: 30, left: 30, bottom: 40 }}
         >
-          <text x="200" y="40" textAnchor="middle" fontSize="22" fontWeight="700" fill="black">
+          <text className = 'daily_activity_text' x="20" y="40" textAnchor="start" fontSize="22" fontWeight="700" fill="black">
             Activités quotidiennes
           </text>
           <CartesianGrid strokeDasharray="3 3" vertical = {false}/>

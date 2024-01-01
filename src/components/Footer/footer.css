@@ -27,3 +27,8 @@ footer{
     margin-right: auto;
 }
 
+@media only screen and (max-device-width : 1400px){
+    footer{
+        width: 100px;
+    }
+}

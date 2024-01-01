@@ -28,10 +28,9 @@ function Home() {
   return (
     <div className='homePage'>
     <Header/>
-    <main className='homePage'>
-      
-      <h1>Bonjour <span className='user'> {userInformation.userInfos?.firstName}</span></h1>
-      <p>Félicitations! Vous avez explosés vos objectifs hier</p>
+    <main>
+      <h1 className='user_title'>Bonjour <span className='user'> {userInformation.userInfos?.firstName}</span></h1>
+      <p className='objective_text'>Félicitations! Vous avez explosés vos objectifs hier</p>
       <article className='dashboard'>
         <div className='dashboard_graph'>
           <div className='dashboard_row activity'>
