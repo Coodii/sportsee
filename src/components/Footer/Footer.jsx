@@ -14,6 +14,7 @@ export default function Footer() {
         <img className='category_img' alt='riding' src={riding}/>
         <img className='category_img' alt='workingOut' src={workingOut}/>
       </div>
+      <p className='copyright'>Copyright, SportSee 2020</p>
     </footer>
   )
 }

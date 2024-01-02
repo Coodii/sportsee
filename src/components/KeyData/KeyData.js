@@ -1,5 +1,6 @@
 import React from 'react';
 import './keyData.css'
+import PropTypes from 'prop-types';
 
 export default function KeyData({image, value, text}) {
   return (
@@ -13,5 +14,11 @@ export default function KeyData({image, value, text}) {
         </div>
     </div>
   )
+}
+
+KeyData.propTypes = {
+  image: PropTypes.node,
+  value: PropTypes.string,
+  text: PropTypes.string
 }
  

@@ -1,16 +1,16 @@
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
-import { getActivity, getPerformances } from '../../Utility/Utility';
+import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
+import { getPerformances } from '../../utility/Utility';
 import { useEffect, useState } from 'react';
 import './performances.css'
 
 
-function Performances()  {
+function Performances({userId})  {
 
-const [performances, setPerformances] = useState ([]);
+  const [performances, setPerformances] = useState ([]);
   useEffect(() => {fetchPerformances()}, []);
   
   async function fetchPerformances () {
-    const info = await getPerformances(12); 
+    const info = await getPerformances(userId); 
     setPerformances(info)
   }
 

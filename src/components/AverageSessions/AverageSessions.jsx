@@ -1,32 +1,20 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
-import { getAverageSesssions } from '../../Utility/Utility';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Rectangle } from 'recharts';
+import React, { useEffect, useState } from 'react'
+import { getAverageSesssions } from '../../utility/Utility';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer} from 'recharts';
 import './averageSessions.css'
 import ToolTipAverageSessions from './ToolTipAverageSessions/ToolTipAverageSessions';
+import { CustomizedCursor } from './CustomizedCursor/CustomizedCursor';
 
 
-export default function AverageSessions() {
+export default function AverageSessions({userId}) {
     const [sessions, setSessions] = useState ([]);
   useEffect(() => {fetchSessions()}, []);
-  //useEffect(() => {}, [userInformation]); 
   
   async function fetchSessions () {
-    const info = await getAverageSesssions(12); 
+    const info = await getAverageSesssions(userId); 
     setSessions(info)
   }
 
-  function CustomizedCursor({ points }) {
-    return (
-      <Rectangle
-        fill="black"
-        opacity={0.1}
-        x={points[0].x}
-        width={3000}
-        height={3000}
-      />
-    );
-    }
     
   return (
     <div className='averageSessions'>

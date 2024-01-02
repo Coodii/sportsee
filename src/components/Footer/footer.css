@@ -27,8 +27,20 @@ footer{
     margin-right: auto;
 }
 
+.copyright{
+    position: absolute;
+    color: white;
+    top: 83%;
+    transform: rotate(270deg);
+    font-size: 11px;
+}
+
 @media only screen and (max-device-width : 1400px){
     footer{
         width: 100px;
+    }
+
+    .copyright{
+        font-size: 8px;
     }
 }

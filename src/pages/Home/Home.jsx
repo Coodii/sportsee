@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getData, getDataUser, isMock } from '../../Utility/Utility';
+import { useParams } from 'react-router-dom';
+import {getDataUser} from '../../utility/Utility';
 import KeyData from '../../components/KeyData/KeyData';
 import calorieImg from '../../assets/calories-icon.png';
 import carbsImg from '../../assets/carbs-icon.png'
@@ -15,42 +16,41 @@ import Footer from '../../components/Footer/Footer';
 
 
 function Home() {
-  
-  const [userInformation, setUserInformations] = useState ([]);
+  const {id} = useParams();
+  const [userInformations, setUserInformations] = useState ([]);
   useEffect(() => {fetchInformationUser()}, []);
-  //useEffect(() => {}, [userInformation]);
   
   async function fetchInformationUser () {
-    const info = await getDataUser(18); 
+    const info = await getDataUser(id); 
     setUserInformations(info)
   }
   
   return (
     <div className='homePage'>
-    <Header/>
-    <main>
-      <h1 className='user_title'>Bonjour <span className='user'> {userInformation.userInfos?.firstName}</span></h1>
-      <p className='objective_text'>Félicitations! Vous avez explosés vos objectifs hier</p>
-      <article className='dashboard'>
-        <div className='dashboard_graph'>
-          <div className='dashboard_row activity'>
-          <DailyActivity/>
+      <Header/>
+      <main>
+        <h1 className='user_title'>Bonjour <span className='user'> {userInformations.userInfos?.firstName}</span></h1>
+        <p className='objective_text'>Félicitations! Vous avez explosés vos objectifs hier 👏</p>
+        <article className='dashboard'>
+          <div className='dashboard_graph'>
+            <div className='dashboard_row activity'>
+            <DailyActivity userId ={id}/>
+            </div>
+            <div className='dashboard_row'>
+            <AverageSessions userId ={id}/>
+            <Performances userId ={id}/>
+            <Score userId={id}/>
+            </div>
           </div>
-          <div className='dashboard_row'>
-          <AverageSessions/>
-          <Performances/>
-          <Score/>
+          <div className='keyData_Card'>
+              <KeyData image={calorieImg} value={userInformations.keyData?.calorieCount + 'kCal'} text = 'Calories' /> 
+              <KeyData image={proteinImg} value={userInformations.keyData?.proteinCount + 'g'} text = 'Protéines' /> 
+              <KeyData image={carbsImg} value={userInformations.keyData?.carbohydrateCount + 'g'} text = 'Glucides' /> 
+              <KeyData image={fatImg} value={userInformations.keyData?.lipidCount + 'g'} text = 'Lipides' /> 
           </div>
-        </div>
-        <div className='keyData_Card'>
-            <KeyData image={calorieImg} value={userInformation.keyData?.calorieCount + 'kCal'} text = 'Calories' /> 
-            <KeyData image={proteinImg} value={userInformation.keyData?.proteinCount + 'g'} text = 'Protéines' /> 
-            <KeyData image={carbsImg} value={userInformation.keyData?.carbohydrateCount + 'g'} text = 'Glucides' /> 
-            <KeyData image={fatImg} value={userInformation.keyData?.lipidCount + 'g'} text = 'Lipides' /> 
-        </div>
-      </article>
-    </main>
-    <Footer/>
+        </article>
+      </main>
+      <Footer/>
     </div>
   )
 } 

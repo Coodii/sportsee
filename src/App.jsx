@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
@@ -8,7 +7,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
+        <Route path='/:id' element={<Home/>}></Route>
       </Routes>
     </div>
   );

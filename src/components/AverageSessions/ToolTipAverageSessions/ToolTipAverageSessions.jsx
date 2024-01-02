@@ -1,12 +1,12 @@
 import React from 'react'
 import './toolTipAverageSessions.css'
 
-export default function ToolTipAverageSessions(content) {
+export default function ToolTipAverageSessions({active,payload}) {
     
-    if (content.active && content.payload && content.payload.length) {
+    if (active) {
         return (
-          <div className="toolTip-averageSessions">
-            <p className="label label_averageSessions">{`${content.payload[0].value}min`}</p>
+          <div className="tooltip_average_sessions">
+            <p className="label label_average_sessions">{`${payload[0].value}min`}</p>
           </div>
         );
     }

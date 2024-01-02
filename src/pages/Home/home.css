@@ -85,9 +85,8 @@ header{
 }
 
 @media only screen and (max-device-width : 1400px){
-    .dashboard_graph{
-        
-        justify-content: space-around;
+    .dashboard{
+        height: 90%;
     }
 
     .dashboard_row{

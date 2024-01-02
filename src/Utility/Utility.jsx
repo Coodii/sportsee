@@ -1,14 +1,18 @@
 
 import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_PERFORMANCE } from "../__mocks__/mock";
 
+/**
+ * Get all the datas of an user.
+ * @id The id of the user
+ */
 export async function getDataUser(id){
     let data;
     let url = `http://localhost:3000/user/${id}`;
     //Try to connect to the server
     try {
         let response = await fetch(url);
-        console.log('Connection successful with user data');
         data = await response.json();
+        console.log('Connection successful with user data');
         return data.data;
         }
     
@@ -20,15 +24,19 @@ export async function getDataUser(id){
     }
 }
 
+/**
+ * Get the activities data of an user.
+ * @param id  The id of the user
+ */
 export async function getActivity(id){
     let data;
     let url = `http://localhost:3000/user/${id}/activity`;
     //Try to connect to the server
     try {
         let response = await fetch(url);
-        console.log('Connection successful with activities ');
         data = await response.json();
         data = convertDailyActivityData(data.data.sessions);
+        console.log('Connection successful with activities ');
         return data;
         }
     
@@ -41,16 +49,19 @@ export async function getActivity(id){
     }
 }
 
-
+/**
+ * Get the average sessions data of an user.
+ * @param id The id of the user
+ */
 export async function getAverageSesssions(id){
     let data;
     let url = `http://localhost:3000/user/${id}/average-sessions`;
     //Try to connect to the server
     try {
         let response = await fetch(url);
-        console.log('Connection successful with average-sessions');
         data = await response.json();
         data = convertAverageSessions(data.data.sessions);
+        console.log('Connection successful with average-sessions');
         return data;
         }
     
@@ -63,15 +74,19 @@ export async function getAverageSesssions(id){
     }
 }
 
+/**
+ * Get the performance data of an user.
+ * @param id The id of the user
+ */
 export async function getPerformances(id){
     let data;
     let url = `http://localhost:3000/user/${id}/performance`;
     //Try to connect to the server
     try {
         let response = await fetch(url);
-        console.log('Connection successful with performances');
         data = await response.json();
-        data = convertPerformanceData(data);
+        data = convertPerformanceData(data.data);
+        console.log('Connection successful with performances');
         return data;
         }
     
@@ -84,15 +99,20 @@ export async function getPerformances(id){
     }
 }
 
+
+/**
+ * Get the score data of an user.
+ * @param id The id of the user
+ */
 export async function getScore(id){
     let data;
     let url = `http://localhost:3000/user/${id}`;
     //Try to connect to the server
     try {
         let response = await fetch(url);
-        console.log('Connection successful with score');
         data = await response.json();
         data = convertScoreData(data.data)
+        console.log('Connection successful with score');
         return data;
         }
     
@@ -105,7 +125,10 @@ export async function getScore(id){
     }
 }
 
-
+/**
+ * Convert the the daily activity data to the right format.
+ * @param {object} data The daily activity data
+ */
 function convertDailyActivityData(data){ 
     let i = 0;
     let newData = [];
@@ -119,7 +142,10 @@ function convertDailyActivityData(data){
     return newData;
 }
 
-
+/**
+ * Convert the the average session data to the right format.
+ * @param {object} data The average session data
+ */
 function convertAverageSessions(data){
     const days = ['L','M', 'M', 'J', 'V', 'S', 'D'];
     let i = -1;
@@ -130,10 +156,13 @@ function convertAverageSessions(data){
           day: days[i],
           sessionLength : data.sessionLength
         })})
-        console.log(newData);
     return newData;
 }
 
+/**
+ * Convert the the perfomance data to the right format.
+ * @param {object} data The perfomance session data
+ */
 function convertPerformanceData(data){
     const translation = {
         intensity: 'Intensité',
@@ -150,10 +179,14 @@ function convertPerformanceData(data){
     return(newData.reverse());
 }
 
+
+/**
+ * Convert the the score data to the right format.
+ * @param {object} data The score data
+ */
 function convertScoreData(data){
     let newData = [];
     if(data.todayScore !== undefined){
-        console.log('test')
         newData.push({score: data.todayScore*100})
     }
     else{
