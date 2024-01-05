@@ -1,6 +1,8 @@
 
 import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_PERFORMANCE } from "../__mocks__/mock";
 
+const isMocked = false;
+
 /**
  * Get all the datas of an user.
  * @param {int} id The id of the user
@@ -8,20 +10,24 @@ import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_PERFORMANCE 
  */
 export async function getDataUser(id){
     let data;
-    let url = `http://localhost:3000/user/${id}`;
-    //Try to connect to the server
-    try {
-        let response = await fetch(url);
-        data = await response.json();
-        console.log('Connection successful with user data');
-        return data.data;
-    }
-    
-    //if unable to connect to the backend, mocking api 
-    catch (err){
-        console.log('Connection error with user data: mocking data instead');
+    if(isMocked){
         data = USER_MAIN_DATA.find(user => user.id === id);
         return data;
+    }
+
+    else {
+        let url = `http://localhost:3000/user/${id}`;
+        //Try to connect to the server
+        try {
+            let response = await fetch(url);
+            data = await response.json();
+            return data.data;
+        }
+        
+        //if unable to connect to the backend, mocking api 
+        catch (err){
+            console.log('Connection error with user data: ' + err);
+        }
     }
 }
 
@@ -32,22 +38,27 @@ export async function getDataUser(id){
  */
 export async function getActivity(id){
     let data;
-    let url = `http://localhost:3000/user/${id}/activity`;
-    //Try to connect to the server
-    try {
-        let response = await fetch(url);
-        data = await response.json();
-        data = convertDailyActivityData(data.data.sessions);
-        console.log('Connection successful with activities ');
-        return data;
-        }
     
-    //if unable to connect to the backend, mocking api 
-    catch (err){
-        console.log('Connection error with activities: mocking data instead');
+    if(isMocked){
         data = USER_ACTIVITY.find(user => user.userId === id);
         data = convertDailyActivityData(data.sessions);
         return data;
+    }
+    
+    else {
+        let url = `http://localhost:3000/user/${id}/activity`;
+        //Try to connect to the server
+        try {
+            let response = await fetch(url);
+            data = await response.json();
+            data = convertDailyActivityData(data.data.sessions);
+            return data;
+        }
+        
+        //if unable to connect to the backend, mocking api 
+        catch (err){
+            console.log('Connection error with activities:' + err);
+        }
     }
 }
 
@@ -58,22 +69,27 @@ export async function getActivity(id){
  */
 export async function getAverageSesssions(id){
     let data;
-    let url = `http://localhost:3000/user/${id}/average-sessions`;
-    //Try to connect to the server
-    try {
-        let response = await fetch(url);
-        data = await response.json();
-        data = convertAverageSessions(data.data.sessions);
-        console.log('Connection successful with average-sessions');
-        return data;
-        }
     
-    //if unable to connect to the backend, mocking api 
-    catch (err){
-        console.log('Connection error with average sessions: mocking data instead');
+    if(isMocked){
         data = USER_AVERAGE_SESSIONS.find(user => user.userId === id);
         data = convertAverageSessions(data.sessions);
         return data;
+    }
+
+    else{
+        let url = `http://localhost:3000/user/${id}/average-sessions`;
+        //Try to connect to the server
+        try {
+            let response = await fetch(url);
+            data = await response.json();
+            data = convertAverageSessions(data.data.sessions);
+            return data;
+            }
+        
+        //if unable to connect to the backend, mocking api 
+        catch (err){
+            console.log('Connection error with average sessions: ' + err);
+        }
     }
 }
 
@@ -84,22 +100,27 @@ export async function getAverageSesssions(id){
  */
 export async function getPerformances(id){
     let data;
-    let url = `http://localhost:3000/user/${id}/performance`;
-    //Try to connect to the server
-    try {
-        let response = await fetch(url);
-        data = await response.json();
-        data = convertPerformanceData(data.data);
-        console.log('Connection successful with performances');
-        return data;
-        }
-    
-    //if unable to connect to the backend, mocking api 
-    catch (err){
-        console.log('Connection error with perfomances: mocking data instead');
+
+    if(isMocked){
         data = USER_PERFORMANCE.find(user => user.userId === id);
         data = convertPerformanceData(data);
         return data;
+    }
+
+    else {
+        let url = `http://localhost:3000/user/${id}/performance`;
+        //Try to connect to the server
+        try {
+            let response = await fetch(url);
+            data = await response.json();
+            data = convertPerformanceData(data.data);
+            return data;
+            }
+        
+        //if unable to connect to the backend, mocking api 
+        catch (err){
+            console.log('Connection error with perfomance: ' + err);
+        }
     }
 }
 
@@ -111,22 +132,27 @@ export async function getPerformances(id){
  */
 export async function getScore(id){
     let data;
-    let url = `http://localhost:3000/user/${id}`;
-    //Try to connect to the server
-    try {
-        let response = await fetch(url);
-        data = await response.json();
-        data = convertScoreData(data.data)
-        console.log('Connection successful with score');
-        return data;
-        }
-    
-    //if unable to connect to the backend, mocking api 
-    catch (err){
-        console.log('Connection error with score: mocking data instead');
+
+    if(isMocked){
         data = USER_MAIN_DATA.find(user => user.id === id);
         data = convertScoreData(data);
         return data;
+    }
+
+    else{
+        let url = `http://localhost:3000/user/${id}`;
+        //Try to connect to the server
+        try {
+            let response = await fetch(url);
+            data = await response.json();
+            data = convertScoreData(data.data)
+            return data;
+            }
+        
+        //if unable to connect to the backend, mocking api 
+        catch (err){
+            console.log('Connection error with score: ' + err);
+        }
     }
 }
 
