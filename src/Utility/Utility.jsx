@@ -3,7 +3,7 @@ import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_PERFORMANCE 
 
 /**
  * Get all the datas of an user.
- * @param {string} id The id of the user
+ * @param {int} id The id of the user
  * @returns {array} The data.
  */
 export async function getDataUser(id){
@@ -15,7 +15,7 @@ export async function getDataUser(id){
         data = await response.json();
         console.log('Connection successful with user data');
         return data.data;
-        }
+    }
     
     //if unable to connect to the backend, mocking api 
     catch (err){
@@ -27,7 +27,7 @@ export async function getDataUser(id){
 
 /**
  * Get the activities data of an user.
- * @param {string} id  The id of the user
+ * @param {int} id  The id of the user
  * @returns {array} The activty data.
  */
 export async function getActivity(id){
@@ -53,7 +53,7 @@ export async function getActivity(id){
 
 /**
  * Get the average sessions data of an user.
- * @param {string} id The id of the user
+ * @param {int} id The id of the user
  * @returns {array} The average sessions data.
  */
 export async function getAverageSesssions(id){
@@ -79,7 +79,7 @@ export async function getAverageSesssions(id){
 
 /**
  * Get the performance data of an user.
- * @param {string} id The id of the user
+ * @param {int} id The id of the user
  * @returns {array} The performance data.
  */
 export async function getPerformances(id){
@@ -106,7 +106,7 @@ export async function getPerformances(id){
 
 /**
  * Get the score data of an user.
- * @param {string} id The id of the user
+ * @param {int} id The id of the user
  * @returns {array} The score data.
  */
 export async function getScore(id){

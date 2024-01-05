@@ -17,11 +17,12 @@ import Footer from '../../components/Footer/Footer';
 
 function Home() {
   const {id} = useParams();
+  let parsedId = parseInt(id);
   const [userInformations, setUserInformations] = useState ([]);
   useEffect(() => {fetchInformationUser()}, []);
   
   async function fetchInformationUser () {
-    const info = await getDataUser(id); 
+    const info = await getDataUser(parsedId); 
     setUserInformations(info)
   }
   
@@ -34,12 +35,12 @@ function Home() {
         <article className='dashboard'>
           <div className='dashboard_graph'>
             <div className='dashboard_row activity'>
-            <DailyActivity userId ={id}/>
+            <DailyActivity userId ={parsedId}/>
             </div>
             <div className='dashboard_row'>
-            <AverageSessions userId ={id}/>
-            <Performances userId ={id}/>
-            <Score userId={id}/>
+            <AverageSessions userId ={parsedId}/>
+            <Performances userId ={parsedId}/>
+            <Score userId={parsedId}/>
             </div>
           </div>
           <div className='keyData_Card'>

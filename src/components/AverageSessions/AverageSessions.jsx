@@ -22,7 +22,7 @@ export default function AverageSessions({userId}) {
           <LineChart data={sessions} margin={{ top: 40, right: 30, left: 30, bottom: 5 }}>
             <text className='average_session_text' x="25" y="45" fontSize="15" fill="white"opacity={0.7}>Durée moyenne des sessions</text>
             <XAxis dataKey="day" tickLine={false}
-              axisLine={false} tick={{ fill: '#FFFFFF', opacity: '0.7' }} dy={-10}/>
+              axisLine={false} tick={{ fill: '#FFFFFF', opacity: '0.7' }} />
             <YAxis hide domain={['dataMin -20', 'dataMax + 30']}/>
             <Line type="natural" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} dot={false} />
             <Tooltip content={<ToolTipAverageSessions/>} cursor={<CustomizedCursor/>} />
